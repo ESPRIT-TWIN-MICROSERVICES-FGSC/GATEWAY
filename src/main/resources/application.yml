@@ -1,18 +1,8 @@
 server:
-  port: ${PORT:5000}
-security:
-  user:
-    password: ${eureka.password}
-
-eureka:
-  instance:
-    hostname: fgsc-gateway.herokuapp.com
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  password: ${EUREKA_USER_PASSWORD:password}
+  port: 3333
+spring:
+  application:
+    name: FGSC_GATEWAY
 
 zuul:
   prefix: /api
