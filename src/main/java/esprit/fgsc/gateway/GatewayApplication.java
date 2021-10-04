@@ -36,7 +36,7 @@ class ServiceInstanceRestController {
     }
     @RequestMapping("/test")
     public List<Application> servicesUrls(){
-        return discoveryClient.getApplications().getRegisteredApplications().get(0);
+        return discoveryClient.getApplications().getRegisteredApplications();
     }
     public String serviceUrl() {
         InstanceInfo instance = discoveryClient.getNextServerFromEureka("FGSC_USERS_MICROSERVICE", false);
