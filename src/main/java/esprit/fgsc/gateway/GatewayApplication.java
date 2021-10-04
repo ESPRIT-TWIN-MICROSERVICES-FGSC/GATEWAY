@@ -2,6 +2,7 @@ package esprit.fgsc.gateway;
 
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
+import com.netflix.discovery.shared.Applications;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -30,8 +31,8 @@ class ServiceInstanceRestController {
         return this.discoveryClient.getInstancesById(id);
     }
     @RequestMapping("/services")
-    public InstanceInfo.InstanceStatus serviceInstances() {
-        return this.discoveryClient.getInstanceRemoteStatus();
+    public Applications serviceInstances() {
+        return this.discoveryClient.getApplications();
     }
     @RequestMapping("/test")
     public InstanceInfo servicesUrls(){
