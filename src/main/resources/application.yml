@@ -6,7 +6,8 @@ security:
 
 eureka:
   instance:
-    hostname: https://fgsc-gateway.herokuapp.com/
+    hostname: fgsc-gateway.herokuapp.com
+    homePageUrl: https://${eureka.instance.hostName}/
   client:
     registerWithEureka: false
     fetchRegistry: false
