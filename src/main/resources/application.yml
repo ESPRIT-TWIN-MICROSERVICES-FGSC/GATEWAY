@@ -13,3 +13,10 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   password: ${EUREKA_USER_PASSWORD:password}
+
+zuul:
+  prefix: /api
+  routes:
+    users:
+      path: /users/**
+      serviceId: FGSC-USERS-MICROSERVICE
