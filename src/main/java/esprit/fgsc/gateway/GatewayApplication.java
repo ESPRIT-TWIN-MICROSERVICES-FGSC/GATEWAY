@@ -30,23 +30,23 @@ class ServiceInstanceRestController {
     private EurekaClient discoveryClient;
     @Autowired
     private EurekaDiscoveryClient dsc;
-    @RequestMapping("/eureka/instances/{id}")
+    @RequestMapping("/a/{id}")
     public List serviceInstancesByApplicationName(@PathVariable String id) {
         return this.discoveryClient.getInstancesById(id);
     }
-    @RequestMapping("/eureka/applications")
+    @RequestMapping("/b/applications")
     public Applications serviceInstances() {
         return this.discoveryClient.getApplications();
     }
-    @RequestMapping("/eureka/info")
+    @RequestMapping("/c/info")
     public ApplicationInfoManager applicationInfoManager(){
         return discoveryClient.getApplicationInfoManager();
     }
-    @RequestMapping("/eureka/services")
+    @RequestMapping("/d/services")
     public List<String> ZOOMER(){
         return dsc.getServices();
     }
-    @RequestMapping("/eureka/service-homepage/{serviceName}")
+    @RequestMapping("/e/service-homepage/{serviceName}")
     public InstanceInfo serviceUrl(@RequestParam String serviceName) {
         InstanceInfo instanceInfo = discoveryClient.getNextServerFromEureka(serviceName, false);
         return instanceInfo;
