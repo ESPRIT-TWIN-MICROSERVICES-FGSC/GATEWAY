@@ -3,10 +3,20 @@ server:
 spring:
   application:
     name: FGSC_GATEWAY
-
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://${EUREKA_URL}/eureka
+    register-with-eureka: false
+    fetch-registry: true
+#  instance:
+#    prefer-ip-address: true
+#    hostname: ${DOMAIN_NAME}
 zuul:
   prefix: /api
-  routes:
-    users:
-      path: /users/**
-      serviceId: FGSC-USERS-MICROSERVICE
+#  routes:
+#    users:
+#      path: /users/**
+#      serviceId: fgsc-users-microservice
+#      url: https://fgsc-users-microservice.herokuapp.com
+##      TODO : This shouldnt be accessed by url, that violates load balancing
