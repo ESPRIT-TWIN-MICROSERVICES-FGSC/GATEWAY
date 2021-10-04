@@ -33,4 +33,12 @@ class ServiceInstanceRestController {
     public InstanceInfo.InstanceStatus serviceInstances() {
         return this.discoveryClient.getInstanceRemoteStatus();
     }
+    @RequestMapping("/test")
+    public InstanceInfo servicesUrls(){
+        return discoveryClient.getNextServerFromEureka("FGSC_USERS_MICROSERVICE", false);
+    }
+    public String serviceUrl() {
+        InstanceInfo instance = discoveryClient.getNextServerFromEureka("FGSC_USERS_MICROSERVICE", false);
+        return instance.getHomePageUrl();
+    }
 }
