@@ -6,7 +6,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: https://${EUREKA_URL}/eureka
+      defaultZone: https://${EUREKA_URL}
     register-with-eureka: false
     fetch-registry: true
 #  instance:
@@ -14,6 +14,7 @@ eureka:
 #    hostname: ${DOMAIN_NAME}
 zuul:
   prefix: /api
+  strip-prefix: true
 #  routes:
 #    users:
 #      path: /users/**
