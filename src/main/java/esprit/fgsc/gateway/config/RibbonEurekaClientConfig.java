@@ -14,7 +14,7 @@ import java.util.List;
 public class RibbonEurekaClientConfig {
     @Bean
     public IPing ribbonPing(IClientConfig config) {
-        return new PingUrl();
+        return new DummyPing();
     }
     @Bean
     public IRule ribbonRule(IClientConfig config) {
