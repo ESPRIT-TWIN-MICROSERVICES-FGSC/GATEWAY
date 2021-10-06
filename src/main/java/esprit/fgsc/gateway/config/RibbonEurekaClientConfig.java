@@ -14,7 +14,7 @@ import java.util.List;
 public class RibbonEurekaClientConfig {
     @Bean
     public IPing ribbonPing(IClientConfig config) {
-        return new NoOpPing();
+        return new PingConstant();
     }
     @Bean
     public IRule ribbonRule(IClientConfig config) {
@@ -29,7 +29,6 @@ public class RibbonEurekaClientConfig {
             public List<Server> getInitialListOfServers() {
                 return new ArrayList<>();
             }
-
             @Override
             public List<Server> getUpdatedListOfServers() {
                 List<Server> serverList = new ArrayList<>();

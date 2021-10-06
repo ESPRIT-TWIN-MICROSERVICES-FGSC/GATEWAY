@@ -28,17 +28,11 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
-#  routes:
-#    users:
-#      path: /users/**
-#      serviceId: users
-#      url: https://fgsc-users-microservice.herokuapp.com
-##      TODO : This shouldnt be accessed by url, that violates load balancing
 ribbon:
   eureka:
     enabled: true
   ConnectTimeout: 10000
-  ReadTimeout: 10000
+  ReadTimeout: 60000
 
 hystrix:
   command:
