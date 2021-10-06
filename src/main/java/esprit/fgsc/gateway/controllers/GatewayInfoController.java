@@ -8,22 +8,21 @@ import org.springframework.cloud.netflix.zuul.filters.Route;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 @RestController
 public class GatewayInfoController{
-    @Autowired
-    private EurekaDiscoveryClient eurekaDiscoveryClient;
-    @Autowired
-    private EurekaClient eurekaClient;
-    @Autowired
-    private RouteLocator routeLocator;
+    @Autowired private EurekaDiscoveryClient eurekaDiscoveryClient;
+    @Autowired private EurekaClient eurekaClient;
+    @Autowired private RouteLocator routeLocator;
+    private final RestTemplate restTemplate = new RestTemplate();
     @GetMapping("/services")
-    public List<String> test(){
+    public List<String> GateWayServices(){
         return eurekaDiscoveryClient.getServices();
     }
     @GetMapping("/info")
-    public InstanceInfo testt(){
+    public InstanceInfo InstanceInfo(){
         return eurekaClient.getApplicationInfoManager().getInfo();
     }
     @GetMapping("/routes")

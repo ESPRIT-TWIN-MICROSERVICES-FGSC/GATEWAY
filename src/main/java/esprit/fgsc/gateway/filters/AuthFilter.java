@@ -3,6 +3,7 @@ package esprit.fgsc.gateway.filters;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Enumeration;
 
@@ -10,13 +11,12 @@ public class AuthFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-        System.out.println("HEEEEEEEEEEEEEEEERE");
         RequestContext ctx = RequestContext.getCurrentContext();
         Enumeration<String> enume = ctx.getRequest().getHeaderNames();
         String header;
         while (enume.hasMoreElements()) {
             header = enume.nextElement();
-            System.out.println(header);
+            System.out.println(header + " " + ctx.getRequest().getHeader(header));
         }
         return null;
     }
@@ -32,7 +32,7 @@ public class AuthFilter extends ZuulFilter {
     }
     @Override
     public String filterType() {
-        return "pre";
+        return FilterConstants.PRE_TYPE;
     }
 
 }

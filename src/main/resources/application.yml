@@ -1,23 +1,50 @@
-server:
-  port: 3333
 spring:
   application:
-    name: FGSC_GATEWAY
+    name: fgsc-gateway
+    admin:
+      enabled: true
 eureka:
   client:
     serviceUrl:
-      defaultZone: https://${EUREKA_URL}
+      defaultZone: ${EUREKA_URL}
     register-with-eureka: false
     fetch-registry: true
-#  instance:
-#    prefer-ip-address: true
-#    hostname: ${DOMAIN_NAME}
+  instance:
+    prefer-ip-address: true
+    app-group-name: fgsc
+    appname: gateway
+    healthcheck:
+      enabled: true
 zuul:
+  host:
+    connect-timeout-millis: 60000
+    max-per-route-connections: 10000
+    max-total-connections: 5000
+    socket-timeout-millis: 60000
+  semaphore:
+    max-semaphores: 500
   prefix: /api
   strip-prefix: true
+  ribbon:
+    eager-load:
+      enabled: true
 #  routes:
 #    users:
 #      path: /users/**
-#      serviceId: fgsc-users-microservice
+#      serviceId: users
 #      url: https://fgsc-users-microservice.herokuapp.com
 ##      TODO : This shouldnt be accessed by url, that violates load balancing
+ribbon:
+  eureka:
+    enabled: true
+  ConnectTimeout: 10000
+  ReadTimeout: 10000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+        thread:
+          timeoutInMilliseconds: 40000
