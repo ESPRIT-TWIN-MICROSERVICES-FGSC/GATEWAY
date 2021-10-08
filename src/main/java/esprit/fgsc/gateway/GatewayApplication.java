@@ -11,12 +11,13 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableEurekaClient
+@EnableAsync
 @EnableZuulProxy
+@EnableEurekaClient
 @SpringBootApplication
 @RibbonClients(defaultConfiguration = RibbonEurekaClientConfig.class)
-@EnableAsync
 public class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
