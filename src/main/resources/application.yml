@@ -34,7 +34,7 @@ zuul:
       path: /auth/**
       serviceId: auth
       stripPrefix: true
-      url: https://fgsc-users-microservice.herokuapp.com
+      url: https://fgsc-auth-service.herokuapp.com
     users-service:
       path: /users/**
       serviceId: users
