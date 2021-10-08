@@ -3,6 +3,7 @@ package esprit.fgsc.gateway.controllers;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.filters.Route;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
@@ -16,6 +17,7 @@ public class GatewayInfoController{
     @Autowired private EurekaDiscoveryClient eurekaDiscoveryClient;
     @Autowired private EurekaClient eurekaClient;
     @Autowired private RouteLocator routeLocator;
+    @LoadBalanced
     private final RestTemplate restTemplate = new RestTemplate();
     @GetMapping("/services")
     public List<String> GateWayServices(){
