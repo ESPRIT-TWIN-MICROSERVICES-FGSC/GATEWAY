@@ -40,6 +40,11 @@ zuul:
       serviceId: users
       stripPrefix: true
       url: https://fgsc-users-microservice.herokuapp.com
+    clients-service:
+      path: /clients/**
+      serviceId: clients
+      stripPrefix: true
+      url: https://warm-falls-36309.herokuapp.com
 ribbon:
   eureka:
     enabled: true
@@ -69,6 +74,15 @@ users-service:
   ribbon:
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
     listOfServers: https://fgsc-users-microservice.herokuapp.com
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+users-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://warm-falls-36309.herokuapp.com
     ConnectTimeout: 1000
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
