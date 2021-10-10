@@ -11,19 +11,16 @@ import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 
 public class SwaggerConfig {
-
     @Autowired
     ZuulProperties properties;
-
     @Primary
     @Bean
     public SwaggerResourcesProvider swaggerResourcesProvider() {
         return () -> {
             List<SwaggerResource> resources = new ArrayList<>();
-            properties.getRoutes().values().stream()
-                    .forEach(route ->
-                            resources
-                                    .add(createResource(route.getServiceId(), route.getServiceId(), "2.0")));
+            properties.getRoutes().values().forEach(route ->
+                resources.add(
+                    createResource(route.getServiceId(), route.getServiceId(), "2.0")));
             return resources;
         };
     }

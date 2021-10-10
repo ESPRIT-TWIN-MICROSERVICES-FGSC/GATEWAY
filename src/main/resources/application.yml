@@ -29,6 +29,7 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
+  # TODO : REMOVE ONCE YOU FIGURE OUT CLIENT SIDE LOAD BALANCING
   routes:
     auth-service:
       path: /auth/**
