@@ -79,10 +79,8 @@ users-service:
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
-<<<<<<< HEAD
-=======
 
-users-service:
+clients-service:
   ribbon:
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
     listOfServers: https://warm-falls-36309.herokuapp.com
@@ -90,4 +88,3 @@ users-service:
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
->>>>>>> 639b02299d35eb1dba6de8823eacda246b503e1b
