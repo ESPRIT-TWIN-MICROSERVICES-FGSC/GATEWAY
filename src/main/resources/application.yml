@@ -1,8 +1,7 @@
 spring:
   application:
     name: fgsc-gateway
-    admin:
-      enabled: true
+
 eureka:
   client:
     serviceUrl:
@@ -31,6 +30,7 @@ zuul:
       enabled: true
   # TODO : REMOVE ONCE YOU FIGURE OUT CLIENT SIDE LOAD BALANCING
   routes:
+    sensitiveHeaders: Cookie,Set-Cookie,Authorization
     auth-service:
       path: /auth/**
       serviceId: auth
@@ -41,11 +41,17 @@ zuul:
       serviceId: users
       stripPrefix: true
       url: https://fgsc-users-microservice.herokuapp.com
-    clients-service:
-      path: /clients/**
-      serviceId: clients
+    messaging-socket-service:
+      path: /rs/**
+      serviceId: messaging-socket-service
       stripPrefix: true
+      # TODO : REPLACE URL
       url: https://warm-falls-36309.herokuapp.com
+    conges-service:
+      path: /conges/**
+      serviceId: conges-service
+      stripPrefix: true
+      url: https://conges-microservice.herokuapp.com/
 ribbon:
   eureka:
     enabled: true
@@ -80,10 +86,20 @@ users-service:
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
 
-clients-service:
+# TODO : REPLACE URL
+messaging-socket-service:
   ribbon:
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
     listOfServers: https://warm-falls-36309.herokuapp.com
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+conges-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://conges-microservice.herokuapp.com/
     ConnectTimeout: 1000
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
