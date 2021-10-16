@@ -104,3 +104,11 @@ conges-service:
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
+employee-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://employee-microservices.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100

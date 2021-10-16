@@ -20,8 +20,8 @@ public class AuthFilter extends ZuulFilter {
 //            header = enume.nextElement();
 //            //System.out.println(header + " " + ctx.getRequest().getHeader(header));
 //        }
-        log.info(RequestContext.getCurrentContext().getRequest().getRequestURI());
-        log.info(RequestContext.getCurrentContext().getRequest().getHeader("Authorization"));
+   //     log.info(RequestContext.getCurrentContext().getRequest().getRequestURI());
+     //   log.info(RequestContext.getCurrentContext().getRequest().getHeader("Authorization"));
         return null;
     }
 
