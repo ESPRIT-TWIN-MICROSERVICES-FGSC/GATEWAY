@@ -13,15 +13,11 @@ public class AuthFilter extends ZuulFilter {
 
     @Override
     public Object run() {
-//        RequestContext ctx = RequestContext.getCurrentContext();
-//        Enumeration<String> enume = ctx.getRequest().getHeaderNames();
-//        String header;
-//        while (enume.hasMoreElements()) {
-//            header = enume.nextElement();
-//            //System.out.println(header + " " + ctx.getRequest().getHeader(header));
-//        }
-   //     log.info(RequestContext.getCurrentContext().getRequest().getRequestURI());
-     //   log.info(RequestContext.getCurrentContext().getRequest().getHeader("Authorization"));
+        RequestContext requestContext = RequestContext.getCurrentContext();
+        log.info(requestContext.getRequest().getRequestURI());
+        log.info(requestContext.getRequest().getHeader("Authorization"));
+//        requestContext.setSendZuulResponse(false);
+//        requestContext.setResponseStatusCode(401);
         return null;
     }
 
