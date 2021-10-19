@@ -30,7 +30,6 @@ zuul:
       enabled: true
   # TODO : REMOVE ONCE YOU FIGURE OUT CLIENT SIDE LOAD BALANCING
   routes:
-    sensitiveHeaders: Cookie,Set-Cookie,Authorization
     auth-service:
       path: /auth/**
       serviceId: auth
@@ -52,6 +51,7 @@ zuul:
       serviceId: conges-service
       stripPrefix: true
       url: https://conges-microservice.herokuapp.com/
+  sensitive-headers: Cookie,Set-Cookie,Authorization
 ribbon:
   eureka:
     enabled: true
