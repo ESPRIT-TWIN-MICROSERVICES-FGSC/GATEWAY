@@ -41,11 +41,10 @@ zuul:
       stripPrefix: true
       url: https://fgsc-users-microservice.herokuapp.com
     messaging-socket-service:
-      path: /rs/**
+      path: /notifs/**
       serviceId: messaging-socket-service
       stripPrefix: true
-      # TODO : REPLACE URL
-      url: https://warm-falls-36309.herokuapp.com
+      url: https://fgsc-rsocket-broker.herokuapp.com
     conges-service:
       path: /conges/**
       serviceId: conges-service
