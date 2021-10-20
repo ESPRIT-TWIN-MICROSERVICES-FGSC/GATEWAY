@@ -30,27 +30,27 @@ zuul:
       enabled: true
   # TODO : REMOVE ONCE YOU FIGURE OUT CLIENT SIDE LOAD BALANCING
   sensitive-headers:
-#  routes:
-#    auth-service:
-#      path: /auth/**
-#      serviceId: auth
-#      stripPrefix: true
-#      url: https://fgsc-auth-service.herokuapp.com
-#    users-service:
-#      path: /users/**
-#      serviceId: users
-#      stripPrefix: true
-#      url: https://fgsc-users-microservice.herokuapp.com
-#    messaging-socket-service:
-#      path: /notifs/**
-#      serviceId: messaging-socket-service
-#      stripPrefix: true
-#      url: https://fgsc-rsocket-broker.herokuapp.com
-#    conges-service:
-#      path: /conges/**
-#      serviceId: conges-service
-#      stripPrefix: true
-#      url: https://conges-microservice.herokuapp.com/
+  routes:
+    auth-service:
+      path: /auth/**
+      serviceId: auth
+      stripPrefix: true
+      url: https://fgsc-auth-service.herokuapp.com
+    users-service:
+      path: /users/**
+      serviceId: users
+      stripPrefix: true
+      url: https://fgsc-users-microservice.herokuapp.com
+    messaging-socket-service:
+      path: /notifs/**
+      serviceId: messaging-socket-service
+      stripPrefix: true
+      url: https://fgsc-rsocket-broker.herokuapp.com
+    conges-service:
+      path: /conges/**
+      serviceId: conges-service
+      stripPrefix: true
+      url: https://conges-microservice.herokuapp.com/
 
 ribbon:
   eureka:
@@ -68,71 +68,71 @@ hystrix:
           timeoutInMilliseconds: 40000
 
 # TODO : Delete the following if you figure out how to load balance automatically by client side eureka discovery
-#auth-service-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: https://fgsc-auth-service.herokuapp.com
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
-#
-#users-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: https://fgsc-users-microservice.herokuapp.com
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
-#
-## TODO : REPLACE URL
-#messaging-socket-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: https://warm-falls-36309.herokuapp.com
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
-#
-#conges-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: https://conges-microservice.herokuapp.com/
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
-#employee-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: https://employee-microservices.herokuapp.com/
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
-#projet-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: https://projet-microservice.herokuapp.com/
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
-#attendance-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: https://attendance-microservices.herokuapp.com/
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
-#job-service:
-#  ribbon:
-#    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-#    listOfServers: https://job-microservices.herokuapp.com/
-#    ConnectTimeout: 1000
-#    ReadTimeout: 3000
-#    MaxTotalHttpConnections: 500
-#    MaxConnectionsPerHost: 100
+auth-service-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://fgsc-auth-service.herokuapp.com
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+users-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://fgsc-users-microservice.herokuapp.com
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+# TODO : REPLACE URL
+messaging-socket-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://warm-falls-36309.herokuapp.com
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+conges-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://conges-microservice.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+employee-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://employee-microservices.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+projet-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://projet-microservice.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+attendance-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://attendance-microservices.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+job-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://job-microservices.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
