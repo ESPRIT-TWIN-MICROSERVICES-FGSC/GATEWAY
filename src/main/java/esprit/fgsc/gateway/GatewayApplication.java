@@ -14,6 +14,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,13 +32,14 @@ public class GatewayApplication {
     }
     @Bean
     public AuthFilter preFilter() {return new AuthFilter();}
-//    @EnableWebSecurity
-//    static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
-//            http.csrf().disable();
-//        }
-//    }
+    @EnableWebSecurity
+    static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http.csrf().disable();
+            System.out.println("OK");
+        }
+    }
     @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {
