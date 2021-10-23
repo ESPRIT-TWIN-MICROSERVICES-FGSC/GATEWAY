@@ -9,13 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 @Slf4j
 public class LoggingFilter extends ZuulFilter {
-    @Autowired
-    private EurekaClient s;
     @Override
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         log.info("Client ip adress : {}",requestContext.getRequest().getRemoteHost());
-        log.info("Is token present ? : {}",requestContext.getRequest().getHeader("Authorization"));
+//        log.info("Is token present ? : {}",requestContext.getRequest().getHeader("Authorization"));
         return null;
     }
     @Override
@@ -24,7 +22,7 @@ public class LoggingFilter extends ZuulFilter {
     }
     @Override
     public int filterOrder() {
-        return FilterConstants.PRE_DECORATION_FILTER_ORDER;
+        return FilterConstants.PRE_DECORATION_FILTER_ORDER - 3;
     }
     @Override
     public String filterType() {
