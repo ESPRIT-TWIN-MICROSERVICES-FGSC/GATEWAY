@@ -2,6 +2,8 @@ package esprit.fgsc.gateway;
 
 import esprit.fgsc.gateway.config.RibbonEurekaClientConfig;
 import esprit.fgsc.gateway.filters.AuthFilter;
+import esprit.fgsc.gateway.filters.ErrorFilter;
+
 import esprit.fgsc.gateway.filters.LoggingFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -47,5 +49,10 @@ public class GatewayApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+    
+    @Bean
+	public ErrorFilter errorFilter() {
+		return new ErrorFilter();
+	}
 }
 
