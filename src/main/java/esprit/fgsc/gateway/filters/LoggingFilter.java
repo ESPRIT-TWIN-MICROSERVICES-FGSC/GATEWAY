@@ -2,31 +2,20 @@ package esprit.fgsc.gateway.filters;
 
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
-import com.netflix.eureka.EurekaServerContext;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
-import org.bouncycastle.cert.ocsp.Req;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
-import org.springframework.context.annotation.Bean;
-
-import java.util.Enumeration;
 @Slf4j
-public class AuthFilter extends ZuulFilter {
+public class LoggingFilter extends ZuulFilter {
     @Autowired
     private EurekaClient s;
     @Override
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         log.info("Client ip adress : {}",requestContext.getRequest().getRemoteHost());
-        log.info(requestContext.getRequest().getHeader("Authorization"));
-        for(Application app : s.getApplications().getRegisteredApplications()){
-            log.info(app.getName());
-        }
-
-//      requestContext.setSendZuulResponse(false);
-//      requestContext.setResponseStatusCode(401);
+        log.info("Is token present ? : {}",requestContext.getRequest().getHeader("Authorization"));
         return null;
     }
     @Override
@@ -35,7 +24,7 @@ public class AuthFilter extends ZuulFilter {
     }
     @Override
     public int filterOrder() {
-        return FilterConstants.SEND_ERROR_FILTER_ORDER;
+        return FilterConstants.PRE_DECORATION_FILTER_ORDER;
     }
     @Override
     public String filterType() {

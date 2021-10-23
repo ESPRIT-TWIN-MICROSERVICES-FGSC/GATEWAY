@@ -2,6 +2,7 @@ package esprit.fgsc.gateway;
 
 import esprit.fgsc.gateway.config.RibbonEurekaClientConfig;
 import esprit.fgsc.gateway.filters.AuthFilter;
+import esprit.fgsc.gateway.filters.LoggingFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -30,8 +31,8 @@ public class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
     }
-    @Bean
-    public AuthFilter preFilter() {return new AuthFilter();}
+    @Bean public AuthFilter preFilter() {return new AuthFilter();}
+    @Bean public LoggingFilter postFilter() {return new LoggingFilter();}
     @EnableWebSecurity
     static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
