@@ -16,7 +16,7 @@ eureka:
       enabled: true
 zuul:
   prefix: /api
-  ignored-services: "*"
+#  ignored-services: "*"
   host:
     connect-timeout-millis: 60000
     max-per-route-connections: 10000
@@ -29,8 +29,8 @@ zuul:
     eager-load:
       enabled: true
   # TODO : REMOVE ONCE YOU FIGURE OUT CLIENT SIDE LOAD BALANCING
+  sensitive-headers:
   routes:
-    sensitiveHeaders: Cookie,Set-Cookie,Authorization
     auth-service:
       path: /auth/**
       serviceId: auth
@@ -42,16 +42,16 @@ zuul:
       stripPrefix: true
       url: https://fgsc-users-microservice.herokuapp.com
     messaging-socket-service:
-      path: /rs/**
+      path: /notifs/**
       serviceId: messaging-socket-service
       stripPrefix: true
-      # TODO : REPLACE URL
-      url: https://warm-falls-36309.herokuapp.com
+      url: https://fgsc-rsocket-broker.herokuapp.com
     conges-service:
       path: /conges/**
       serviceId: conges-service
       stripPrefix: true
       url: https://conges-microservice.herokuapp.com/
+
 ribbon:
   eureka:
     enabled: true
@@ -136,4 +136,3 @@ job-service:
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
-
