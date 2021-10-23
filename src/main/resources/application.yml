@@ -50,7 +50,12 @@ zuul:
       path: /conges/**
       serviceId: conges-service
       stripPrefix: true
-      url: https://conges-microservice.herokuapp.com/
+      url: https://conges-microservice.herokuapp.com/ 
+    departments-service:
+      path: /deps/**
+      serviceId: departments-service
+      stripPrefix: true
+      url: https://depratement.herokuapp.com/
 
 ribbon:
   eureka:
@@ -132,6 +137,14 @@ job-service:
   ribbon:
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
     listOfServers: https://job-microservices.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+departments-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://depratement.herokuapp.com/
     ConnectTimeout: 1000
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
