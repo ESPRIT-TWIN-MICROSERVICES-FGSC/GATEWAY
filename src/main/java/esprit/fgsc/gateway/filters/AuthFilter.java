@@ -44,7 +44,12 @@ public class AuthFilter extends ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-        return  AUTHORIZED_ROUTES.stream().noneMatch(s -> s.startsWith(RequestContext.getCurrentContext().getRequest().getRequestURI()));
+        boolean shouldFilter = true;
+        for (String authorizedPath : AUTHORIZED_ROUTES){
+            if(RequestContext.getCurrentContext().getRequest().getRequestURI().startsWith(authorizedPath))
+                shouldFilter = false;
+        }
+        return shouldFilter;
     }
 
     @Override
@@ -57,6 +62,6 @@ public class AuthFilter extends ZuulFilter {
         return FilterConstants.PRE_TYPE;
     }
 
-    private static final List<String> AUTHORIZED_ROUTES = Arrays.asList("/api/auth/accounts");
+    private static final List<String> AUTHORIZED_ROUTES = Arrays.asList("/api/auth/account");
 
 }
