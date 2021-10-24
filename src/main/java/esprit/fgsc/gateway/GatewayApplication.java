@@ -20,7 +20,7 @@ import org.springframework.web.filter.CorsFilter;
 
 @EnableAsync
 @EnableZuulProxy
-@CrossOrigin(origins = "*", value = "*")
+@CrossOrigin("*")
 @RestController
 @EnableEurekaClient
 @SpringBootApplication
