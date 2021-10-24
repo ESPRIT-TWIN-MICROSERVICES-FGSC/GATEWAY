@@ -23,6 +23,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @EnableAsync
 @EnableZuulProxy
@@ -36,6 +39,7 @@ public class GatewayApplication {
     }
     @Bean public AuthFilter preFilter() {return new AuthFilter();}
     @Bean public LoggingFilter postFilter() {return new LoggingFilter();}
+    @Bean public ErrorFilter errorFilter() {return new ErrorFilter();}
     @EnableWebSecurity
     static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
@@ -50,9 +54,18 @@ public class GatewayApplication {
         return new RestTemplate();
     }
     
+
+
     @Bean
-	public ErrorFilter errorFilter() {
-		return new ErrorFilter();
-	}
+    public CorsFilter corsFilter() {
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        final CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("*", config);
+        return new CorsFilter(source);
+    }
 }
 

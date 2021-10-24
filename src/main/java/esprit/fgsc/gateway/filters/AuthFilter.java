@@ -1,11 +1,13 @@
 package esprit.fgsc.gateway.filters;
 
+import com.google.common.net.HttpHeaders;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import esprit.fgsc.gateway.models.UserAccount;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -20,12 +22,14 @@ public class AuthFilter extends ZuulFilter {
         String token = requestContext.getRequest().getHeader("Authorization");
         if(token != null){
             token = token.replaceFirst("Bearer ","");
-            UserAccount response = template.getForObject("https://fgsc-auth-service.herokuapp.com/account/user-from-jwt-token?token="+token, UserAccount.class);
-            if (response == null) {
+            //this.template.headForHeaders("https://fgsc-auth-service.herokuapp.com").add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN,"*");
+            ResponseEntity<UserAccount> authResponse = template.getForEntity("https://fgsc-auth-service.herokuapp.com/account/user-from-jwt-token?token=" + token, UserAccount.class);
+            if (!authResponse.getStatusCode().is2xxSuccessful()) {
                 denyAccess();
                 log.info("Access denied");
             } else {
-                log.info("User {} is accessing : {}", response.getEmail(), requestContext.getRequest().getRequestURI());
+                UserAccount ua = authResponse.getBody();
+                log.info("User {} is accessing : {}", ua.getEmail(), requestContext.getRequest().getRequestURI());
             }
         } else {
             denyAccess();
