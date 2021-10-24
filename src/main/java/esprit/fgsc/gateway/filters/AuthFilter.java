@@ -20,7 +20,7 @@ public class AuthFilter extends ZuulFilter {
         String token = requestContext.getRequest().getHeader("Authorization");
         if(token != null){
             token = token.replaceFirst("Bearer ","");
-            UserAccount response = template.getForObject("https://fgsc-auth-service.herokuapp.com/user-from-jwt-token?token="+token, UserAccount.class);
+            UserAccount response = template.getForObject("https://fgsc-auth-service.herokuapp.com/account/user-from-jwt-token?token="+token, UserAccount.class);
             if (response == null) {
                 denyAccess();
                 log.info("Access denied");
