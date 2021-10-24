@@ -1,11 +1,8 @@
 package esprit.fgsc.gateway.filters;
 
-import com.netflix.discovery.EurekaClient;
-import com.netflix.discovery.shared.Application;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 @Slf4j
 public class LoggingFilter extends ZuulFilter {

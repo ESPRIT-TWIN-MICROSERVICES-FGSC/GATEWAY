@@ -1,18 +1,15 @@
 package esprit.fgsc.gateway.filters;
 
 
-
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
-import org.springframework.util.ReflectionUtils;
-
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
-
-
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
-import static esprit.fgsc.gateway.filters.FilterConstants.*;
+import org.springframework.http.MediaType;
+import org.springframework.util.ReflectionUtils;
+
+import static esprit.fgsc.gateway.filters.FilterConstants.IS_ERROR_CODE_AVAILABLE;
+import static esprit.fgsc.gateway.filters.FilterConstants.IS_EXCEPTION_AVAILABLE;
 
 
 public class ErrorFilter extends ZuulFilter{
@@ -31,7 +28,6 @@ public class ErrorFilter extends ZuulFilter{
 
     @Override
     public boolean shouldFilter() {
-        // only forward to errorPath if it hasn't been forwarded to already
         return RequestContext.getCurrentContext().containsKey(IS_ERROR_CODE_AVAILABLE);
     }
 
