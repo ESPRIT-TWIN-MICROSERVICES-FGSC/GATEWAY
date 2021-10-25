@@ -56,7 +56,16 @@ zuul:
       serviceId: departments-service
       stripPrefix: true
       url: https://depratement.herokuapp.com/
-
+    reclamtion-service:
+      path: /rec/**
+      serviceId: reclamtion-service
+      stripPrefix: true
+      url: https://reclamtion-microservice.herokuapp.com/
+    facture-service:
+      path: /fact/**
+      serviceId: facture-service
+      stripPrefix: true
+      url: https://facturesmicro.herokuapp.com/ 
 ribbon:
   eureka:
     enabled: true
@@ -149,3 +158,19 @@ departments-service:
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
+reclamtion-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://reclamtion-microservice.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+facture-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://facturesmicro.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100    
