@@ -31,9 +31,9 @@ public class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
     }
-    @Bean public AuthFilter preFilter() {return new AuthFilter();}
-    @Bean public LoggingFilter postFilter() {return new LoggingFilter();}
-    @Bean public ErrorFilter errorFilter() {return new ErrorFilter();}
+//    @Bean public AuthFilter preFilter() {return new AuthFilter();}
+//    @Bean public LoggingFilter postFilter() {return new LoggingFilter();}
+//    @Bean public ErrorFilter errorFilter() {return new ErrorFilter();}
 //    @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {
@@ -41,17 +41,17 @@ public class GatewayApplication {
     }
 
 
-
-    @Bean
-    public CorsFilter corsFilter() {
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        final CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(false);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("*", config);
-        return new CorsFilter(source);
-    }
+//
+//    @Bean
+//    public CorsFilter corsFilter() {
+//        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        final CorsConfiguration config = new CorsConfiguration();
+//        config.setAllowCredentials(false);
+//        config.addAllowedOrigin("*");
+//        config.addAllowedHeader("*");
+//        config.addAllowedMethod("*");
+//        source.registerCorsConfiguration("*", config);
+//        return new CorsFilter(source);
+//    }
 }
 
