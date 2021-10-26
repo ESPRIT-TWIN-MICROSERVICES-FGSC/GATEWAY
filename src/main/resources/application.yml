@@ -36,11 +36,6 @@ zuul:
       serviceId: auth
       stripPrefix: true
       url: https://fgsc-auth-service.herokuapp.com
-    users-service:
-      path: /users/**
-      serviceId: users
-      stripPrefix: true
-      url: https://fgsc-users-microservice.herokuapp.com
     messaging-socket-service:
       path: /notifs/**
       serviceId: messaging-socket-service
@@ -50,7 +45,7 @@ zuul:
       path: /conges/**
       serviceId: conges-service
       stripPrefix: true
-      url: https://conges-microservice.herokuapp.com/ 
+      url: https://conges-microservice.herokuapp.com/
     departments-service:
       path: /deps/**
       serviceId: departments-service
@@ -82,16 +77,6 @@ auth-service-service:
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
 
-users-service:
-  ribbon:
-    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
-    listOfServers: https://fgsc-users-microservice.herokuapp.com
-    ConnectTimeout: 1000
-    ReadTimeout: 3000
-    MaxTotalHttpConnections: 500
-    MaxConnectionsPerHost: 100
-
-# TODO : REPLACE URL
 messaging-socket-service:
   ribbon:
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList

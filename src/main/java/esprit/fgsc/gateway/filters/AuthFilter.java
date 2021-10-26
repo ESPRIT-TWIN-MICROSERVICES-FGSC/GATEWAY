@@ -6,6 +6,7 @@ import com.netflix.zuul.context.RequestContext;
 import esprit.fgsc.gateway.models.UserAccount;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.commons.util.InetUtils;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -16,6 +17,8 @@ import java.util.*;
 public class AuthFilter extends ZuulFilter {
     @Autowired
     private RestTemplate template;
+    @Autowired
+    private InetUtils inet;
     @Override
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
@@ -53,7 +56,7 @@ public class AuthFilter extends ZuulFilter {
             if(RequestContext.getCurrentContext().getRequest().getRequestURI().startsWith(authorizedPath))
                 shouldFilter = false;
         }
-        return shouldFilter;
+        return shouldFilter ;
     }
 
     @Override
@@ -66,6 +69,13 @@ public class AuthFilter extends ZuulFilter {
         return FilterConstants.PRE_TYPE;
     }
 
-    private static final List<String> AUTHORIZED_ROUTES = Arrays.asList("/api/auth/account");
+    private static final List<String> AUTHORIZED_ROUTES =
+            Arrays.asList(
+                    "/api/auth/account"
+                    ,"/swagger-ui.html"
+                    , "/api/auth/v2/api-docs"
+                    , "/api/notifs/v2/api-docs"
+                    , "/api/satisfaction/v2/api-docs"
+            );
 
 }
