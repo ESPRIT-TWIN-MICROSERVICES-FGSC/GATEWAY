@@ -51,6 +51,11 @@ zuul:
       serviceId: conges-service
       stripPrefix: true
       url: https://conges-microservice.herokuapp.com/ 
+    client-service:
+      path: /client/**
+      serviceId: client-service
+      stripPrefix: true
+      url: https://warm-falls-36309.herokuapp.com/ 
     departments-service:
       path: /deps/**
       serviceId: departments-service
