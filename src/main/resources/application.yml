@@ -56,6 +56,26 @@ zuul:
       serviceId: client-service
       stripPrefix: true
       url: https://warm-falls-36309.herokuapp.com/ 
+    employee-service:
+      path: /employee/**
+      serviceId: employee-service
+      stripPrefix: true
+      url: https://employee-microservices.herokuapp.com/
+    attendance-service:
+      path: /attendance/**
+      serviceId: attendance-service
+      stripPrefix: true
+      url: https://attendance-microservices.herokuapp.com/
+    projet-service:
+      path: /projet/**
+      serviceId: projet-service
+      stripPrefix: true
+      url: https://projet-microservice.herokuapp.com/
+    job-service:
+      path: /job/**
+      serviceId: job-service
+      stripPrefix: true
+      url: https://job-microservices.herokuapp.com/
     departments-service:
       path: /deps/**
       serviceId: departments-service
