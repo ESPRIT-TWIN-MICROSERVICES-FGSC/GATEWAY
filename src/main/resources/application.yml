@@ -86,6 +86,11 @@ zuul:
       serviceId: facture-service
       stripPrefix: true
       url: https://facturesmicro.herokuapp.com/
+    satisfaction-service:
+      path: /cfa/**
+      serviceId: facture-service
+      stripPrefix: true
+      url: https://fgsc-satisfaction.herokuapp.com/
 ribbon:
   eureka:
     enabled: true
@@ -180,6 +185,15 @@ facture-service:
   ribbon:
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
     listOfServers: https://facturesmicro.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
+satisfaction-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://fgsc-satisfaction.herokuapp.com/
     ConnectTimeout: 1000
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
