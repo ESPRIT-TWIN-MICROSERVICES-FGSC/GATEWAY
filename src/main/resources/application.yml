@@ -45,12 +45,12 @@ zuul:
       path: /conges/**
       serviceId: conges-service
       stripPrefix: true
-      url: https://conges-microservice.herokuapp.com/ 
+      url: https://conges-microservice.herokuapp.com/
     client-service:
       path: /client/**
       serviceId: client-service
       stripPrefix: true
-      url: https://warm-falls-36309.herokuapp.com/ 
+      url: https://warm-falls-36309.herokuapp.com/
     employee-service:
       path: /employee/**
       serviceId: employee-service
@@ -85,7 +85,7 @@ zuul:
       path: /fact/**
       serviceId: facture-service
       stripPrefix: true
-      url: https://facturesmicro.herokuapp.com/ 
+      url: https://facturesmicro.herokuapp.com/
 ribbon:
   eureka:
     enabled: true
@@ -183,4 +183,4 @@ facture-service:
     ConnectTimeout: 1000
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
-    MaxConnectionsPerHost: 100    
+    MaxConnectionsPerHost: 100

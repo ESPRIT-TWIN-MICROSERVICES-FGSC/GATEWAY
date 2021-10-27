@@ -1,5 +1,6 @@
 package esprit.fgsc.gateway;
 
+//import esprit.fgsc.gateway.config.RibbonEurekaClientConfig;
 import esprit.fgsc.gateway.config.RibbonEurekaClientConfig;
 import esprit.fgsc.gateway.filters.AuthFilter;
 import esprit.fgsc.gateway.filters.ErrorFilter;
@@ -10,6 +11,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.netflix.zuul.EnableZuulServer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,8 +28,9 @@ import java.util.Collections;
 
 @EnableAsync
 @EnableZuulProxy
-@CrossOrigin("*")
-@RestController
+//@CrossOrigin("*")
+//@RestController
+//@EnableZuulServer
 @EnableEurekaClient
 @SpringBootApplication
 @RibbonClients(defaultConfiguration = RibbonEurekaClientConfig.class)

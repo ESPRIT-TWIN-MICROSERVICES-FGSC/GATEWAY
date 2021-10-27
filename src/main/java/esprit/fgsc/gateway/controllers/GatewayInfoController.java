@@ -17,8 +17,6 @@ public class GatewayInfoController{
     @Autowired private EurekaDiscoveryClient eurekaDiscoveryClient;
     @Autowired private EurekaClient eurekaClient;
     @Autowired private RouteLocator routeLocator;
-    @LoadBalanced
-    private final RestTemplate restTemplate = new RestTemplate();
     @GetMapping("/services")
     public List<String> GateWayServices(){
         return eurekaDiscoveryClient.getServices();
