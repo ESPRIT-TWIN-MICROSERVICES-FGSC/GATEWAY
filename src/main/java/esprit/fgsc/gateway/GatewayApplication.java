@@ -35,7 +35,7 @@ public class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
     }
-    //@Bean public AuthFilter preFilter() {return new AuthFilter();}
+    @Bean public AuthFilter preFilter() {return new AuthFilter();}
     @Bean public LoggingFilter postFilter() {return new LoggingFilter();}
     @Bean public ErrorFilter errorFilter() {return new ErrorFilter();}
 //    @LoadBalanced
