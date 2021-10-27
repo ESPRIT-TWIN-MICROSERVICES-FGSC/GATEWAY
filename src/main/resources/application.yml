@@ -91,11 +91,13 @@ zuul:
       serviceId: facture-service
       stripPrefix: true
       url: https://fgsc-satisfaction.herokuapp.com/
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
 ribbon:
   eureka:
     enabled: true
   ConnectTimeout: 10000
   ReadTimeout: 60000
+
 
 hystrix:
   command:
