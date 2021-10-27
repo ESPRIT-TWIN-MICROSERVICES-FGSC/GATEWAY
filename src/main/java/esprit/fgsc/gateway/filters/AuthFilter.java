@@ -18,15 +18,12 @@ import java.util.*;
 public class AuthFilter extends ZuulFilter {
     @Autowired
     private RestTemplate template;
-    @Autowired
-    private InetUtils inet;
     @Override
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         String token = requestContext.getRequest().getHeader("Authorization");
         if(token != null){
             token = token.replaceFirst("Bearer ","");
-            //this.template.headForHeaders("https://fgsc-auth-service.herokuapp.com").add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN,"*");
             ResponseEntity<UserAccount> authResponse = template.getForEntity("https://fgsc-auth-service.herokuapp.com/account/user-from-jwt-token?token=" + token, UserAccount.class);
             if (!authResponse.getStatusCode().is2xxSuccessful()) {
                 denyAccess();

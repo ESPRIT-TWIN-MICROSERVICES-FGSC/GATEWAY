@@ -10,7 +10,6 @@ public class LoggingFilter extends ZuulFilter {
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         log.info("Client ip adress : {}",requestContext.getRequest().getRemoteHost());
-//        log.info("Is token present ? : {}",requestContext.getRequest().getHeader("Authorization"));
         return null;
     }
     @Override
