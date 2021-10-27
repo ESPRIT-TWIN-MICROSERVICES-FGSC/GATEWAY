@@ -20,7 +20,7 @@ public class SwaggerConfig {
             List<SwaggerResource> resources = new ArrayList<>();
             properties.getRoutes().values().forEach(route ->
                 resources.add(
-                    createResource(route.getServiceId(), route.getServiceId(), "2.0")));
+                    createResource(route.getServiceId(), route.getUrl(), "2.0")));
             return resources;
         };
     }
