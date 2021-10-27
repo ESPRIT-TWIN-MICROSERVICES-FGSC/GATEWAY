@@ -49,7 +49,7 @@ public class GatewayApplication {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(false);
-        config.setAllowedOrigins(Collections.singletonList(""));
+        config.setAllowedOrigins(Collections.singletonList("*"));
         config.setAllowedHeaders(Collections.singletonList("*"));
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("HEAD");
