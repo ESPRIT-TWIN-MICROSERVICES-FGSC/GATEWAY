@@ -17,7 +17,7 @@ public class GatewayCorsFilter implements Filter {
 //        System.out.println("CORS FILTER WORKING IN GATEWAY:::");
 //
 //
-        response.setHeader("Access-Control-Allow-Origin", "*");
+//        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE,OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type,x-requested-with");
         response.setHeader("Access-Control-Max-Age", "3600");
