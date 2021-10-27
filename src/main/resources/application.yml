@@ -29,7 +29,7 @@ zuul:
     eager-load:
       enabled: true
   # TODO : REMOVE ONCE YOU FIGURE OUT CLIENT SIDE LOAD BALANCING
-  sensitive-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  sensitive-headers:
   routes:
     auth-service:
       path: /auth/**
