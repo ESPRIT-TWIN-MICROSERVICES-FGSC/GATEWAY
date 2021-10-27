@@ -5,6 +5,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import esprit.fgsc.gateway.models.UserAccount;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.commons.util.InetUtils;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
@@ -45,6 +46,7 @@ public class AuthFilter extends ZuulFilter {
         RequestContext context = RequestContext.getCurrentContext();
         context.setSendZuulResponse(false);
         context.setResponseStatusCode(401);
+
         context.setResponseBody("Unauthorized request");
         context.sendZuulResponse();
     }
