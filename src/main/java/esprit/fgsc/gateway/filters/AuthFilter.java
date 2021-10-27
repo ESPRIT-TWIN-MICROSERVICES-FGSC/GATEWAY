@@ -78,6 +78,7 @@ public class AuthFilter extends ZuulFilter {
                     , "/api/auth/v2/api-docs"
                     , "/api/notifs/v2/api-docs"
                     , "/api/cfa/v2/api-docs"
+                    , "/api/attendance/v2/api-docs"
                     , "/api/satisfaction/v2/api-docs"
             );
 
