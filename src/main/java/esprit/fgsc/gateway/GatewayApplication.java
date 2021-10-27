@@ -60,8 +60,7 @@ public class GatewayApplication {
         config.setAllowedHeaders(Collections.singletonList("*"));
         config.setAllowedMethods(Collections.singletonList("*"));
         source.registerCorsConfiguration("/**", config);
-        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
-        return bean;
+        return new FilterRegistrationBean(new CorsFilter(source));
     }
 }
 
