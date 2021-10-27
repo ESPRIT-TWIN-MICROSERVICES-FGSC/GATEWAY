@@ -29,7 +29,7 @@ zuul:
     eager-load:
       enabled: true
   # TODO : REMOVE ONCE YOU FIGURE OUT CLIENT SIDE LOAD BALANCING
-  sensitive-headers:
+  sensitive-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
   routes:
     auth-service:
       path: /auth/**
@@ -91,7 +91,6 @@ zuul:
       serviceId: facture-service
       stripPrefix: true
       url: https://fgsc-satisfaction.herokuapp.com/
-  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
 ribbon:
   eureka:
     enabled: true
