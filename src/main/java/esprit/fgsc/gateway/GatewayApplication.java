@@ -49,7 +49,6 @@ public class GatewayApplication {
 
 
     @Bean
-    @PostConstruct
     public FilterRegistrationBean corsFilter() {
         System.out.println("OK COOMER");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
