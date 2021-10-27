@@ -50,7 +50,7 @@ public class GatewayApplication {
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(false);
 //        config.addAllowedOrigin("*");
-//        config.addAllowedHeader("*");
+        config.addAllowedHeader("*");
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("HEAD");
         config.addAllowedMethod("GET");
