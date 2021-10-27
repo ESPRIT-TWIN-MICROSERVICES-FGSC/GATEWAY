@@ -33,6 +33,7 @@ public class AuthFilter extends ZuulFilter {
                 log.info("Access denied");
             } else {
                 UserAccount ua = authResponse.getBody();
+                assert ua != null;
                 log.info("User {} is accessing : {}", ua.getEmail(), requestContext.getRequest().getRequestURI());
             }
         } else {
