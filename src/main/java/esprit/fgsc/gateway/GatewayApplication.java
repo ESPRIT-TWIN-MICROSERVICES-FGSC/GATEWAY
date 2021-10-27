@@ -1,8 +1,7 @@
 package esprit.fgsc.gateway;
 
-//import esprit.fgsc.gateway.config.RibbonEurekaClientConfig;
-
 import esprit.fgsc.gateway.config.RibbonEurekaClientConfig;
+
 import esprit.fgsc.gateway.filters.AuthFilter;
 import esprit.fgsc.gateway.filters.ErrorFilter;
 import esprit.fgsc.gateway.filters.LoggingFilter;
@@ -20,14 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 
-@EnableAsync
 @EnableZuulProxy
-//@CrossOrigin("*")
 @RestController
 @EnableEurekaClient
 @SpringBootApplication
@@ -39,7 +37,6 @@ public class GatewayApplication {
     @Bean public AuthFilter preFilter() {return new AuthFilter();}
     @Bean public LoggingFilter postFilter() {return new LoggingFilter();}
     @Bean public ErrorFilter errorFilter() {return new ErrorFilter();}
-//    @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
@@ -60,7 +57,7 @@ public class GatewayApplication {
         config.setAllowedHeaders(Collections.singletonList("*"));
         config.setAllowedMethods(Collections.singletonList("*"));
         source.registerCorsConfiguration("/**", config);
-        FilterRegistrationBean bean = new FilterRegistrationBean(new org.springframework.web.filter.CorsFilter(source));
+        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
         bean.setOrder(0);
         return bean;
     }

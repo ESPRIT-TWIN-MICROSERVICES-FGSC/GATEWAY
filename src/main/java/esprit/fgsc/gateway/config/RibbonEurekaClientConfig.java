@@ -2,7 +2,6 @@ package esprit.fgsc.gateway.config;
 
 import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.*;
-import com.netflix.loadbalancer.NoOpPing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
