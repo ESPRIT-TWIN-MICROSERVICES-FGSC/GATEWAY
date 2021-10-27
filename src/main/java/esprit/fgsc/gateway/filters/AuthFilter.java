@@ -77,6 +77,7 @@ public class AuthFilter extends ZuulFilter {
                     ,"/swagger-ui.html"
                     , "/api/auth/v2/api-docs"
                     , "/api/notifs/v2/api-docs"
+                    , "/api/cfa/v2/api-docs"
                     , "/api/satisfaction/v2/api-docs"
             );
 
