@@ -28,7 +28,6 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
-  # TODO : REMOVE ONCE YOU FIGURE OUT CLIENT SIDE LOAD BALANCING
   sensitive-headers:
   routes:
     auth-service:
@@ -91,6 +90,11 @@ zuul:
       serviceId: facture-service
       stripPrefix: true
       url: https://fgsc-satisfaction.herokuapp.com/
+    todo-service:
+      path: /todo/**
+      serviceId: todo-service
+      stripPrefix: true
+      url: https://todo-microservices.herokuapp.com/
   ignored-headers: Access-Control-Allow-Origin
 ribbon:
   eureka:
@@ -199,3 +203,13 @@ satisfaction-service:
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
+  
+todo-service:
+  ribbon:
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    listOfServers: https://todo-microservices.herokuapp.com/
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+   
