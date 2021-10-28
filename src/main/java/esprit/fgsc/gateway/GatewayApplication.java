@@ -20,7 +20,9 @@ import org.springframework.web.filter.CorsFilter;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @EnableZuulProxy
 @RestController
@@ -48,8 +50,11 @@ public class GatewayApplication {
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
+        List<String> allowed = new ArrayList();
+        allowed.add("https://vodoo.netlify.app");
+        allowed.add("http://localhost:4200");
         config.setAllowCredentials(false);
-        config.setAllowedOrigins(Collections.singletonList("*"));
+        config.setAllowedOrigins(allowed);
         config.setAllowedHeaders(Collections.singletonList("*"));
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("HEAD");
