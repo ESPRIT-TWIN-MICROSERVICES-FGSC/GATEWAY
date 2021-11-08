@@ -50,11 +50,11 @@ public class GatewayApplication {
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
-        List<String> allowed = new ArrayList();
-        allowed.add("https://vodoo.netlify.app");
-        allowed.add("http://localhost:4200");
+//        List<String> allowed = new ArrayList();
+//        allowed.add("https://vodoo.netlify.app");
+//        allowed.add("http://localhost:4200");
         config.setAllowCredentials(false);
-        config.setAllowedOrigins(allowed);
+        config.setAllowedOrigins(Collections.singletonList("*"));
         config.setAllowedHeaders(Collections.singletonList("*"));
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("HEAD");
